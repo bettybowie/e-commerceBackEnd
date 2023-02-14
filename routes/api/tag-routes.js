@@ -40,7 +40,7 @@ router.post('/', (req, res) => {
   Tag.create(req.body)
     .then((tag) => {
 
-      if (req.body.productTagIds.length) {
+      if (req.body.productIds.length) {
         const productTagIdArr = req.body.productIds.map((product_id) => {
           return {
             product_id,
@@ -100,7 +100,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
   try {
-    const tagData = await tagData.destroy({
+    const tagData = await Tag.destroy({
       where: {
         id: req.params.id,
       },
